@@ -18,7 +18,7 @@ class SyncronizationSystem {
     }
     
     public void Syncronized(){
-         sa.Syncronized();
+         sa.Syncronized(listamaquinas);
     }
    
 }
