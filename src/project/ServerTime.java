@@ -12,9 +12,13 @@ class ServerTime {
     
   public Date GetTime(){
      /* servidores de Time NTP en argentina
+       
        server 2.ar.pool.ntp.org
 	   server 3.south-america.pool.ntp.org
 	   server 2.south-america.pool.ntp.org
+       
+       Observatorio naval de Bs As  - hora oficial de Arg
+       ntp.ign.gob.ar
      */ 
      Date date = new Date();
      try {
