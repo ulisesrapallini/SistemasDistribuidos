@@ -6,7 +6,7 @@ class Machine {
     
     private String dirIP;
     
-    public void Machine(){
+    public Machine(){
         
     }
     
