@@ -6,7 +6,7 @@ import java.net.DatagramSocket;
 import java.util.Date;
 
 class ServerTime {
-  public void ServerTime(){
+  public ServerTime(){
       
   }   
     
@@ -31,7 +31,8 @@ class ServerTime {
          // Get response
          socket.receive(packet);
          byte[] msn = packet.getData();
-         NTPMessage ntp = new NTPMessage(msn);  
+         NTPMessage ntp = new NTPMessage(msn);
+         socket.close();  
          System.out.println( ntp.receiveTimestamp );
       }
       catch(Exception e){

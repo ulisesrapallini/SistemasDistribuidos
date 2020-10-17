@@ -7,7 +7,7 @@ class SyncronizationSystem {
     private ArrayList<Machine> listamaquinas = new ArrayList(); // lista de maquinas a sincronizar
     private SyncAlgorithm sa; // Algoritmo de sincronizacion
     
-    public void SyncronizationSystem(){}
+    public SyncronizationSystem(){}
     
     public void setSyncSysetem(SyncAlgorithm sa  ){
         this.sa = sa;

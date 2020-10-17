@@ -11,11 +11,11 @@ class ComunicacionSystem {
        
    }
     
-   public void Send(String message, String Destino, int port){
+   public void Send(Message message, String Destino, int port){
         try {
             DatagramPacket paqueteUDP;
             InetAddress dir_remota = InetAddress.getByName( Destino );
-            byte[] buffer = message.getBytes(); // retorna los bytes del string
+            byte[] buffer = message.toArrayByte(); // retorna los bytes del string
             paqueteUDP = new DatagramPacket(buffer, buffer.length, dir_remota, port);
             DatagramSockSend = new DatagramSocket();
             DatagramSockSend.send(paqueteUDP);
