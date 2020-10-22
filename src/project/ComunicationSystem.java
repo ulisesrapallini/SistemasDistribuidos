@@ -3,15 +3,15 @@ package project;
 import java.net.*;
 import java.util.Timer;
 
-class ComunicationSystem {
+public class ComunicationSystem {
    
-   private DatagramSocket DatagramSockSend;
-   private DatagramSocket DatagramSockReceive;
+   private static DatagramSocket DatagramSockSend;
+   private static DatagramSocket DatagramSockReceive;
    private Timer time;
 
-   public void ComunicationSystem(){ }
+   public ComunicationSystem(){ }
     
-   public void Send(Message message, Machine machDestino ){
+   public static void Send(Message message, Machine machDestino ){
         try {
             DatagramPacket paqueteUDP;
             InetAddress dir_remota = machDestino.getDirIPV4(); // InetAddress.getByName( Destino );
@@ -27,7 +27,7 @@ class ComunicationSystem {
         }
    }   
     
-   public Message Receive(Machine machReceive){
+   public static Message Receive(Machine machReceive){
        Message msnRet = new Message();;
        int longitdmensaje = 100;
        byte pkg_byte[] = new byte[1];

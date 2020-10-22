@@ -1,7 +1,10 @@
 package project;
 import java.net.InetAddress;
+import java.io.Serializable;
 
-public class Direction {
+public class Direction implements Serializable {
+    
+    static final long serialVersionUID = 00000000;
 
     private InetAddress dirIPv4;
     private int portSend;

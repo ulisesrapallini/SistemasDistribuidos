@@ -1,7 +1,9 @@
 package project;
 
-public class Message {
+import java.io.Serializable;
 
+public class Message implements Serializable {
+    static final long serialVersionUID = 00000000;
     private String origen;
     private String destino;
     private String portOirgen;
@@ -13,8 +15,6 @@ public class Message {
     public Message(byte[] datos){ }
 
     public byte [] toArrayByte(){
-       String separador = "#";
-       String marcaString = "#S";
        String datos = this.origen+this.destino+this.portDestino+this.portDestino+this.flags;
        return datos.getBytes();
     }

@@ -8,9 +8,8 @@ public class Main {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
 
-        ComunicationSystem cs = new ComunicationSystem();
         Message ms = new Message();
-        cs.Send(ms, "127.0.0.1", 3000);
+        ComunicationSystem.Send(ms, "127.0.0.1", 3000);
         String ack =  cs.Receive(2500);
         if(ack == "ACK"){
            String respuesta = cs.Receive(2500);     
