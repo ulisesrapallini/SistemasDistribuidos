@@ -1,15 +1,15 @@
 package project;
 
 import java.net.*;
+import java.util.Timer;
 
 class ComunicacionSystem {
    
-    private DatagramSocket DatagramSockSend;
-    private DatagramSocket DatagramSockReceive;
-    
-   public void ComunicationSystem(){
-       
-   }
+   private DatagramSocket DatagramSockSend;
+   private DatagramSocket DatagramSockReceive;
+   private Timer time;
+
+   public void ComunicationSystem(){ }
     
    public void Send(Message message, String Destino, int port){
         try {
@@ -19,6 +19,7 @@ class ComunicacionSystem {
             paqueteUDP = new DatagramPacket(buffer, buffer.length, dir_remota, port);
             DatagramSockSend = new DatagramSocket();
             DatagramSockSend.send(paqueteUDP);
+            DatagramSockSend.close();
         }
         catch(Exception e){
              
