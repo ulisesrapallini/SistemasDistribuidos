@@ -47,18 +47,35 @@ public class ComunicationSystem {
        return msnRet;
    } 
     
-   public Message Peticion(Message peticion, Machine maquinaenvio,Machine maquinarecepcion){
-       Message m = new Message();
+   public Message Peticion(Message peticion, Machine maquinacliente,Machine maquinaserver){
+       Message respuesta = new Message();
          // envio del la peticion send
-         this.Send(peticion,maquinaenvio);
+         this.Send(peticion,maquinaserver);
          // esperar el reconocimiento receive
-         Message ack = this.Receive(maquinarecepcion);
+         Message ack = this.Receive(maquinacliente);
          if(ack.getFlags() == "ACK"){
-             Message respuesta = Receive(maquinarecepcion);
+             respuesta = Receive(maquinacliente);
+             Message confirmacionrespuesta = new Message();
+             confirmacionrespuesta.setFlags("ACK");
+             this.Send(confirmacionrespuesta, maquinaserver);
          }
          // esperar la respuesta receive
 
-       return m;
+       return respuesta;
+   }
+
+   public void Respuesta(Message respuesta, Machine maquinaserver,Machine maquinacliente){
+       Message peticion = Receive(maquinaserver);
+       if(peticion.getFlags() == "PETICION"){
+           Message ackpeticion = new Message();
+           Send(ackpeticion,maquinacliente);
+           Send(respuesta, maquinacliente);
+           Message ackrespuesta = Receive(maquinacliente);
+           if(ackrespuesta.getFlags() == "ACK"){
+
+           }
+       } 
+
    }
     
 }

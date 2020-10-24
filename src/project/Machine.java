@@ -32,7 +32,7 @@ class Machine {
 
     public void setTime(Date hora){
          Message message = new Message();
-         ComunicationSystem.Send(message, this);    
+        // ComunicationSystem.Send(message, this);    
     }
     
     public Date getTime(){
