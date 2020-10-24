@@ -8,20 +8,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
 
-        Message ms = new Message();
-        ComunicationSystem.Send(ms, "127.0.0.1", 3000);
-        String ack =  cs.Receive(2500);
-        if(ack == "ACK"){
-           String respuesta = cs.Receive(2500);     
-        }
-
-
-        //ComunicationSystem cs = new ComunicationSystem();
-         String mensajerecibido =  cs.Receive(3200);
-         System.out.println(mensajerecibido);
-
-        /*
-        SyncronizationSystem ss = new SyncronizationSystem();
+       /* SyncronizationSystem ss = new SyncronizationSystem();
  
         Machine m1 = new Machine();
         Machine m2 = new Machine();
@@ -35,8 +22,26 @@ public class Main {
         ss.setSyncSysetem(ca);
         ss.Syncronized();
 
+        Message ms = new Message();
+        ComunicationSystem.Send(ms, m1);
+        Message ack =  ComunicationSystem.Receive(m1);
+        if(ack.getFlags() == "ACK"){
+           Message respuesta = ComunicationSystem.Receive(m1);     
+        }
+
+
+        //ComunicationSystem cs = new ComunicationSystem();
+         Message mensajerecibido =  ComunicationSystem.Receive(m1);
+         System.out.println(mensajerecibido);
         */
-        
+        ComunicationSystem cs = new ComunicationSystem();
+        Machine m1 = new Machine();
+        Machine m2 = new Machine();
+        Message peticion = new Message();
+        // aca hay que cargar el mensaje
+        peticion.setFlags("PETICION");
+        Message respuesta = cs.Peticion(peticion, m1, m2);
+
     }
 
 }

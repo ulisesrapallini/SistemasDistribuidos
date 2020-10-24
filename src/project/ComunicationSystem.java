@@ -11,7 +11,7 @@ public class ComunicationSystem {
 
    public ComunicationSystem(){ }
     
-   public static void Send(Message message, Machine machDestino ){
+   public void Send(Message message, Machine machDestino ){
         try {
             DatagramPacket paqueteUDP;
             InetAddress dir_remota = machDestino.getDirIPV4(); // InetAddress.getByName( Destino );
@@ -27,7 +27,7 @@ public class ComunicationSystem {
         }
    }   
     
-   public static Message Receive(Machine machReceive){
+   public Message Receive(Machine machReceive){
        Message msnRet = new Message();;
        int longitdmensaje = 100;
        byte pkg_byte[] = new byte[1];
@@ -47,5 +47,18 @@ public class ComunicationSystem {
        return msnRet;
    } 
     
+   public Message Peticion(Message peticion, Machine maquinaenvio,Machine maquinarecepcion){
+       Message m = new Message();
+         // envio del la peticion send
+         this.Send(peticion,maquinaenvio);
+         // esperar el reconocimiento receive
+         Message ack = this.Receive(maquinarecepcion);
+         if(ack.getFlags() == "ACK"){
+             Message respuesta = Receive(maquinarecepcion);
+         }
+         // esperar la respuesta receive
+
+       return m;
+   }
     
 }

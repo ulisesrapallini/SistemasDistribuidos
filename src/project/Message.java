@@ -20,10 +20,16 @@ public class Message implements Serializable {
     }
 
     public Message toMessage( byte[] datos){
-        
-
+        // armar el mensaje a partir del array de bytes
         return this;
     }
-    // "#Shola#I33#S"
+
+    public String getFlags(){
+        return this.flags;    
+    }
+
+    public void setFlags(String tipomensaje ){
+       this.flags = tipomensaje;
+    } 
 
 }

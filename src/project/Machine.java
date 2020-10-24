@@ -7,6 +7,7 @@ class Machine {
 
     private Direction dirIP;
     
+    public Machine(){ }
     public Machine(Direction dir){
         this.dirIP = dir;
     }
@@ -30,10 +31,8 @@ class Machine {
     }
 
     public void setTime(Date hora){
-         ComunicationSystem cs;
          Message message = new Message();
-         
-         cs.Send(message, this);    
+         ComunicationSystem.Send(message, this);    
     }
     
     public Date getTime(){
